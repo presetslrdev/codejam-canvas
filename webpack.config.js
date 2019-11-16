@@ -1,14 +1,23 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin =  require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
+  mode: "development",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-
+    filename: "./main.js"
   },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000,
+    hot: true,
+    watchContentBase: true,
+    progress: true
+  },
+
   module: {
     rules: [
       {
@@ -45,6 +54,9 @@ module.exports = {
 
   plugins: [
     new ExtractTextPlugin('style.css'),
+    new CopyPlugin([
+      {from: 'src/assets', to: 'assets', toType: 'dir'}
+    ]),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html',
