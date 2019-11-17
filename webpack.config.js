@@ -1,16 +1,18 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
     entry: "./src/index.js",
+    mode: "development",
     output: {
-        path: path.resolve(__dirname, './docs'),
-        filename: "./main.js"
+        path: path.resolve(__dirname, './dist'),
+        //filename: "./main.js"
     },
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
+        contentBase: path.join(__dirname, "./dist"),
         compress: true,
         port: 9000,
         hot: true,
@@ -21,6 +23,19 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: { minimize: false }
+                    }
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
+            },
+            {
                 test: /.scss$/,
                 use: ExtractTextPlugin.extract({
                     publicPath: '../',
@@ -29,7 +44,7 @@ module.exports = {
                 })
             },
             {
-                test: /.(png|jpg|svg)$/,
+                test: /.(png|jpe?g|gif|svg)$/,
                 use: [{
                     loader: 'file-loader',
                     options: {
@@ -53,14 +68,19 @@ module.exports = {
     },
 
     plugins: [
-        new ExtractTextPlugin('style.css'),
+        new ExtractTextPlugin('style.css?[hash]'),
         new CopyPlugin([
             {from: 'src/assets', to: 'assets', toType: 'dir'}
         ]),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './index.html'),
-            filename: 'index.html',
-            inject: 'body'
+            template: './src/index.html',
+            filename: './index.html',
         }),
-    ]
+        new MiniCssExtractPlugin({
+            filename: '[name].css?[hash]'
+        })
+    ],
+    optimization: {
+        minimize: false
+    }
 };
