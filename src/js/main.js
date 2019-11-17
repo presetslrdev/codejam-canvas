@@ -44,7 +44,7 @@ handleMouse = function (e) {
             image.onload = function () {
                 canvasContext.drawImage(image, 0, 0, canvasWidth, canvasHeight);
             };
-            image.src = '/assets/images/image.png';
+            image.src = './assets/images/image.png';
             break;
     }
 };
