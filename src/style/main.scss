@@ -46,6 +46,7 @@ p, a {
   max-width: 1440px;
   height: 100vh;
   margin: 0 auto;
+  background: url("./assets/images/bg.png");
 }
 
 .header {
@@ -54,6 +55,7 @@ p, a {
   align-items: center;
   padding: 15px 20px;
   margin-bottom: 30px;
+  background: #fff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -64,13 +66,13 @@ p, a {
 }
 
 .nav__burger {
-  background-image: url("../assets/images/menu_burger.svg");
+  background-image: url("./assets/images/menu_burger.svg");
   width: 28px;
   height: 28px;
 }
 
 .nav__dotted {
-  background-image: url("../assets/images/menu_dotted.svg");
+  background-image: url("./assets/images/menu_dotted.svg");
   width: 24px;
   height: 24px;
 }
@@ -89,6 +91,7 @@ p, a {
 
 .tools-panel {
   padding: 16px 0;
+  background-color: #fff;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
 
   &:not(:last-child) {
@@ -160,5 +163,6 @@ p, a {
 
   .canvas {
     background: #e6e6e6;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
   }
 }
