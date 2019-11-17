@@ -7,6 +7,74 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas class="canvas" id="canvas" width="512" height="512"></canvas>
+<div class="container">
+    <header class="header">
+        <nav class="nav nav__burger"></nav>
+        <h1 class="title">CodeJam - Pallete</h1>
+        <nav class="nav nav__dotted"></nav>
+    </header>
+    <main class="main">
+        <aside>
+            <section class="tools-panel">
+                <ul class="tool">
+                    <li>
+                        <img src="../assets/images/paint-bucket.svg" alt="">
+                        <span>Paint bucket</span>
+                    </li>
+                    <li>
+                        <img src="../assets/images/dropper.svg" alt="">
+                        <span>Choose color</span>
+                    </li>
+                    <li>
+                        <img src="../assets/images/move.svg" alt="">
+                        <span>Move</span>
+                    </li>
+                    <li>
+                        <img src="../assets/images/scales.svg" alt="">
+                        <span>Transform</span>
+                    </li>
+                </ul>
+            </section>
+            <section class="tools-panel">
+                <ul class="tool">
+                    <li>
+                        <span class="color black"></span>
+                        <span>Current color</span>
+                    </li>
+                    <li><span class="color white"></span>
+                        <span>Prev color</span>
+                    </li>
+                    <li><span class="color red"></span>
+                        <span>red</span>
+                    </li>
+                    <li><span class="color green"></span>
+                        <span>green</span>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="drawing-area">
+            <canvas class="canvas" id="canvas" width="512" height="512"></canvas>
+        </div>
+        <aside>
+            <section class="tools-panel">
+                <div class="selection">
+                    <div class="selection-item">
+                        <input id="size4" type="radio" name="size" value="size4" onchange="handleMouse(event)">
+                        <label for="size4">4x4</label>
+                    </div>
+                    <div class="selection-item">
+                        <input id="size32" type="radio" name="size" value="size32" onchange="handleMouse(event)">
+                        <label for="size32">32x32</label>
+                    </div>
+                    <div class="selection-item">
+                        <input id="image" type="radio" name="size" value="image" onchange="handleMouse(event)">
+                        <label for="image">RS Image</label>
+                    </div>
+                </div>
+            </section>
+        </aside>
+    </main>
+</div>
 </body>
 </html>
